@@ -33,9 +33,6 @@ class CompanyUnitAddressDataImportPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testImportImportsCompany(): void
     {
         $this->tester->ensureDatabaseTableIsEmpty();
@@ -50,9 +47,6 @@ class CompanyUnitAddressDataImportPluginTest extends Unit
         $this->tester->assertDatabaseTableContainsData();
     }
 
-    /**
-     * @return void
-     */
     public function testImportThrowsExceptionWhenCompanyNotFound(): void
     {
         $dataImportConfigurationTransfer = $this->getDataImporterReaderConfigurationTransfer('import/company_unit_address_with_invalid_company.csv');
@@ -66,9 +60,6 @@ class CompanyUnitAddressDataImportPluginTest extends Unit
         $companyUnitAddressDataImportPlugin->import($dataImportConfigurationTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testImportThrowsExceptionWhenCountryNotFound(): void
     {
         $dataImportConfigurationTransfer = $this->getDataImporterReaderConfigurationTransfer('import/company_unit_address_with_invalid_country.csv');
@@ -82,20 +73,12 @@ class CompanyUnitAddressDataImportPluginTest extends Unit
         $companyUnitAddressDataImportPlugin->import($dataImportConfigurationTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGetImportTypeReturnsTypeOfImporter(): void
     {
         $CompanyUnitAddressDataImportPlugin = new CompanyUnitAddressDataImportPlugin();
         $this->assertSame(CompanyUnitAddressDataImportConfig::IMPORT_TYPE_COMPANY_UNIT_ADDRESS, $CompanyUnitAddressDataImportPlugin->getImportType());
     }
 
-    /**
-     * @param string $filePath
-     *
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
     protected function getDataImporterReaderConfigurationTransfer(string $filePath): DataImporterConfigurationTransfer
     {
         $dataImporterReaderConfigurationTransfer = new DataImporterReaderConfigurationTransfer();

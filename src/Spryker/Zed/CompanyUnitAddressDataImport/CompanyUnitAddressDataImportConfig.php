@@ -29,9 +29,6 @@ class CompanyUnitAddressDataImportConfig extends DataImportConfig
         return $this->buildImporterConfiguration($moduleDataImportDirectory . 'company_unit_address.csv', static::IMPORT_TYPE_COMPANY_UNIT_ADDRESS);
     }
 
-    /**
-     * @return string
-     */
     protected function getModuleRoot(): string
     {
         $moduleRoot = realpath(
